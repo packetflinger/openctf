@@ -34,7 +34,7 @@
    because we define the full size ones in this file */
 #define GAME_INCLUDE
 #include "game.h"
-#include "menu.h"
+#include "p_menu.h"
 
 /* the "gameversion" client command will print this plus compile date */
 #define GAMEVERSION "ctf"
