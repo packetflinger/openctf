@@ -50,36 +50,29 @@
 #define CONFIG_CTF_MATCH (CS_AIRACCEL - 1)
 #define CONFIG_CTF_TEAMINFO (CS_AIRACCEL - 2)
 
-typedef enum
-{
-	CTF_NOTEAM,
-	CTF_TEAM1,
-	CTF_TEAM2
+typedef enum {
+    CTF_NOTEAM, CTF_TEAM1, CTF_TEAM2
 } ctfteam_t;
 
-typedef enum
-{
-	CTF_GRAPPLE_STATE_FLY,
-	CTF_GRAPPLE_STATE_PULL,
-	CTF_GRAPPLE_STATE_HANG
+typedef enum {
+    CTF_GRAPPLE_STATE_FLY, CTF_GRAPPLE_STATE_PULL, CTF_GRAPPLE_STATE_HANG
 } ctfgrapplestate_t;
 
-typedef struct ghost_s
-{
-	char netname[16];
-	int number;
+typedef struct ghost_s {
+    char netname[16];
+    int number;
 
-	/* stats */
-	int deaths;
-	int kills;
-	int caps;
-	int basedef;
-	int carrierdef;
+    /* stats */
+    int deaths;
+    int kills;
+    int caps;
+    int basedef;
+    int carrierdef;
 
-	int code; /* ghost code */
-	int team; /* team */
-	int score; /* frags at time of disconnect */
-	edict_t *ent;
+    int code; /* ghost code */
+    int team; /* team */
+    int score; /* frags at time of disconnect */
+    edict_t *ent;
 } ghost_t;
 
 extern cvar_t *ctf;
@@ -125,11 +118,11 @@ void CTFPrecache(void);
 void SP_info_player_team1(edict_t *self);
 void SP_info_player_team2(edict_t *self);
 
-char *CTFTeamName(int team);
-char *CTFOtherTeamName(int team);
+char* CTFTeamName(int team);
+char* CTFOtherTeamName(int team);
 void CTFAssignSkin(edict_t *ent, char *s);
 void CTFAssignTeam(gclient_t *who);
-edict_t *SelectCTFSpawnPoint(edict_t *ent);
+edict_t* SelectCTFSpawnPoint(edict_t *ent);
 qboolean CTFPickup_Flag(edict_t *ent, edict_t *other);
 void CTFDrop_Flag(edict_t *ent, gitem_t *item);
 void CTFEffects(edict_t *player);
@@ -152,7 +145,7 @@ void CTFGrapplePull(edict_t *self);
 void CTFResetGrapple(edict_t *self);
 
 /* TECH */
-gitem_t *CTFWhat_Tech(edict_t *ent);
+gitem_t* CTFWhat_Tech(edict_t *ent);
 qboolean CTFPickup_Tech(edict_t *ent, edict_t *other);
 void CTFDrop_Tech(edict_t *ent, gitem_t *item);
 void CTFDeadDropTech(edict_t *ent);
