@@ -63,7 +63,7 @@ OBJS := \
 	p_trail.o \
 	p_view.o \
 	p_weapon.o \
-	q_shared.o
+	shared.o
 
 ifdef CONFIG_VARIABLE_SERVER_FPS
     CFLAGS += -DUSE_FPS=1
