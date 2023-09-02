@@ -37,10 +37,12 @@
 #include <time.h>
 
 typedef unsigned char byte;
-typedef enum {false, true}  qboolean;
+typedef enum {
+    false, true
+} qboolean;
 
 #ifndef NULL
- #define NULL ((void *)0)
+#define NULL ((void *)0)
 #endif
 
 /* angle indexes */
@@ -82,14 +84,13 @@ typedef enum {false, true}  qboolean;
 #define PRINT_ALERT 2
 
 /* destination class for gi.multicast() */
-typedef enum
-{
-	MULTICAST_ALL,
-	MULTICAST_PHS,
-	MULTICAST_PVS,
-	MULTICAST_ALL_R,
-	MULTICAST_PHS_R,
-	MULTICAST_PVS_R
+typedef enum {
+    MULTICAST_ALL,
+    MULTICAST_PHS,
+    MULTICAST_PVS,
+    MULTICAST_ALL_R,
+    MULTICAST_PHS_R,
+    MULTICAST_PVS_R
 } multicast_t;
 
 /*
@@ -109,7 +110,7 @@ typedef int fixed8_t;
 typedef int fixed16_t;
 
 #ifndef M_PI
- #define M_PI 3.14159265358979323846 /* matches value in gcc v2 math.h */
+#define M_PI 3.14159265358979323846 /* matches value in gcc v2 math.h */
 #endif
 
 struct cplane_s;
@@ -178,18 +179,18 @@ float LerpAngle(float a1, float a2, float frac);
 
 void ProjectPointOnPlane(vec3_t dst, const vec3_t p, const vec3_t normal);
 void PerpendicularVector(vec3_t dst, const vec3_t src);
-void RotatePointAroundVector(vec3_t dst, const vec3_t dir,
-		const vec3_t point, float degrees);
+void RotatePointAroundVector(vec3_t dst, const vec3_t dir, const vec3_t point,
+    float degrees);
 
 /* ============================================= */
 
-char *COM_SkipPath(char *pathname);
+char* COM_SkipPath(char *pathname);
 void COM_StripExtension(char *in, char *out);
 void COM_FileBase(char *in, char *out);
 void COM_FilePath(const char *in, char *out);
 void COM_DefaultExtension(char *path, const char *extension);
 
-char *COM_Parse(char **data_p);
+char* COM_Parse(char **data_p);
 
 /* data is an in/out parm, returns a parsed out token */
 void Com_sprintf(char *dest, int size, char *fmt, ...);
@@ -215,7 +216,7 @@ float BigFloat(float l);
 float LittleFloat(float l);
 
 void Swap_Init(void);
-char *va(char *format, ...);
+char* va(char *format, ...);
 
 /* ============================================= */
 
@@ -224,7 +225,7 @@ char *va(char *format, ...);
 #define MAX_INFO_VALUE 64
 #define MAX_INFO_STRING 512
 
-char *Info_ValueForKey(char *s, char *key);
+char* Info_ValueForKey(char *s, char *key);
 void Info_RemoveKey(char *s, char *key);
 void Info_SetValueForKey(char *s, char *key, char *value);
 qboolean Info_Validate(char *s);
@@ -242,11 +243,11 @@ extern int curtime; /* time returned by last Sys_Milliseconds */
 int Sys_Milliseconds(void);
 void Sys_Mkdir(char *path);
 void Sys_Rmdir(char *path);
-char *strlwr(char *s);
+char* strlwr(char *s);
 
 /* large block stack allocation routines */
-void *Hunk_Begin(int maxsize);
-void *Hunk_Alloc(int size);
+void* Hunk_Begin(int maxsize);
+void* Hunk_Alloc(int size);
 void Hunk_Free(void *buf);
 int Hunk_End(void);
 
@@ -258,8 +259,8 @@ int Hunk_End(void);
 #define SFF_SYSTEM 0x10
 
 /* pass in an attribute mask of things you wish to REJECT */
-char *Sys_FindFirst(char *path, unsigned musthave, unsigned canthave);
-char *Sys_FindNext(unsigned musthave, unsigned canthave);
+char* Sys_FindFirst(char *path, unsigned musthave, unsigned canthave);
+char* Sys_FindNext(unsigned musthave, unsigned canthave);
 void Sys_FindClose(void);
 
 /* this is only here so the functions in q_shared.c and q_shwin.c can link */
@@ -275,25 +276,24 @@ void Com_Printf(char *msg, ...);
  */
 
 #ifndef CVAR
- #define CVAR
+#define CVAR
 
- #define CVAR_ARCHIVE 1     /* set to cause it to be saved to vars.rc */
- #define CVAR_USERINFO 2    /* added to userinfo  when changed */
- #define CVAR_SERVERINFO 4  /* added to serverinfo when changed */
- #define CVAR_NOSET 8       /* don't allow change from console at all, */
-							/* but can be set from the command line */
- #define CVAR_LATCH 16      /* save changes until server restart */
+#define CVAR_ARCHIVE 1     /* set to cause it to be saved to vars.rc */
+#define CVAR_USERINFO 2    /* added to userinfo  when changed */
+#define CVAR_SERVERINFO 4  /* added to serverinfo when changed */
+#define CVAR_NOSET 8       /* don't allow change from console at all, */
+/* but can be set from the command line */
+#define CVAR_LATCH 16      /* save changes until server restart */
 
 /* nothing outside the Cvar_*() functions should modify these fields! */
-typedef struct cvar_s
-{
-	char *name;
-	char *string;
-	char *latched_string; /* for CVAR_LATCH vars */
-	int flags;
-	qboolean modified; /* set each time the cvar is changed */
-	float value;
-	struct cvar_s *next;
+typedef struct cvar_s {
+    char *name;
+    char *string;
+    char *latched_string; /* for CVAR_LATCH vars */
+    int flags;
+    qboolean modified; /* set each time the cvar is changed */
+    float value;
+    struct cvar_s *next;
 } cvar_t;
 
 #endif /* CVAR */
@@ -371,13 +371,12 @@ typedef struct cvar_s
 #define AREA_TRIGGERS 2
 
 /* plane_t structure */
-typedef struct cplane_s
-{
-	vec3_t normal;
-	float dist;
-	byte type; /* for fast side tests */
-	byte signbits; /* signx + (signy<<1) + (signz<<1) */
-	byte pad[2];
+typedef struct cplane_s {
+    vec3_t normal;
+    float dist;
+    byte type; /* for fast side tests */
+    byte signbits; /* signx + (signy<<1) + (signz<<1) */
+    byte pad[2];
 } cplane_t;
 
 /* structure offset for asm code */
@@ -390,50 +389,43 @@ typedef struct cplane_s
 #define CPLANE_PAD0 18
 #define CPLANE_PAD1 19
 
-typedef struct cmodel_s
-{
-	vec3_t mins, maxs;
-	vec3_t origin; /* for sounds or lights */
-	int headnode;
+typedef struct cmodel_s {
+    vec3_t mins, maxs;
+    vec3_t origin; /* for sounds or lights */
+    int headnode;
 } cmodel_t;
 
-typedef struct csurface_s
-{
-	char name[16];
-	int flags;
-	int value;
+typedef struct csurface_s {
+    char name[16];
+    int flags;
+    int value;
 } csurface_t;
 
-typedef struct mapsurface_s  /* used internally due to name len probs */
-{
-	csurface_t c;
-	char rname[32];
+typedef struct mapsurface_s { /* used internally due to name len probs */
+    csurface_t c;
+    char rname[32];
 } mapsurface_t;
 
 /* a trace is returned when a box is swept through the world */
-typedef struct
-{
-	qboolean allsolid;      /* if true, plane is not valid */
-	qboolean startsolid;    /* if true, the initial point was in a solid area */
-	float fraction;         /* time completed, 1.0 = didn't hit anything */
-	vec3_t endpos;          /* final position */
-	cplane_t plane;         /* surface normal at impact */
-	csurface_t *surface;    /* surface hit */
-	int contents;           /* contents on other side of surface hit */
-	struct edict_s *ent;    /* not set by CM_*() functions */
+typedef struct {
+    qboolean allsolid; /* if true, plane is not valid */
+    qboolean startsolid; /* if true, the initial point was in a solid area */
+    float fraction; /* time completed, 1.0 = didn't hit anything */
+    vec3_t endpos; /* final position */
+    cplane_t plane; /* surface normal at impact */
+    csurface_t *surface; /* surface hit */
+    int contents; /* contents on other side of surface hit */
+    struct edict_s *ent; /* not set by CM_*() functions */
 } trace_t;
 
 /* pmove_state_t is the information necessary for client side movement */
 /* prediction */
-typedef enum
-{
-	/* can accelerate and turn */
-	PM_NORMAL,
-	PM_SPECTATOR,
-	/* no acceleration or turning */
-	PM_DEAD,
-	PM_GIB, /* different bounding box */
-	PM_FREEZE
+typedef enum {
+    /* can accelerate and turn */
+    PM_NORMAL, PM_SPECTATOR,
+    /* no acceleration or turning */
+    PM_DEAD, PM_GIB, /* different bounding box */
+    PM_FREEZE
 } pmtype_t;
 
 /* pmove->pm_flags */
@@ -446,21 +438,20 @@ typedef enum
 #define PMF_NO_PREDICTION 64    /* temporarily disables prediction (used for grappling hook) */
 
 /* this structure needs to be communicated bit-accurate/
-   from the server to the client to guarantee that 
-   prediction stays in sync, so no floats are used. 
-   if any part of the game code modifies this struct, it 
-   will result in a prediction error of some degree. */
-typedef struct
-{
-	pmtype_t pm_type;
+ from the server to the client to guarantee that
+ prediction stays in sync, so no floats are used.
+ if any part of the game code modifies this struct, it
+ will result in a prediction error of some degree. */
+typedef struct {
+    pmtype_t pm_type;
 
-	short origin[3];            /* 12.3 */
-	short velocity[3];          /* 12.3 */
-	byte pm_flags;              /* ducked, jump_held, etc */
-	byte pm_time;               /* each unit = 8 ms */
-	short gravity;
-	short delta_angles[3];      /* add to command angles to get view direction 
-								   changed by spawns, rotating objects, and teleporters */
+    short origin[3]; /* 12.3 */
+    short velocity[3]; /* 12.3 */
+    byte pm_flags; /* ducked, jump_held, etc */
+    byte pm_time; /* each unit = 8 ms */
+    short gravity;
+    short delta_angles[3]; /* add to command angles to get view direction
+     changed by spawns, rotating objects, and teleporters */
 } pmove_state_t;
 
 /* button bits */
@@ -469,49 +460,47 @@ typedef struct
 #define BUTTON_ANY 128 /* any key whatsoever */
 
 /* usercmd_t is sent to the server each client frame */
-typedef struct usercmd_s
-{
-	byte msec;
-	byte buttons;
-	short angles[3];
-	short forwardmove, sidemove, upmove;
-	byte impulse;           /* remove? */
-	byte lightlevel;        /* light level the player is standing on */
+typedef struct usercmd_s {
+    byte msec;
+    byte buttons;
+    short angles[3];
+    short forwardmove, sidemove, upmove;
+    byte impulse; /* remove? */
+    byte lightlevel; /* light level the player is standing on */
 } usercmd_t;
 
 #define MAXTOUCH 32
-typedef struct
-{
-	/* state (in / out) */
-	pmove_state_t s;
+typedef struct {
+    /* state (in / out) */
+    pmove_state_t s;
 
-	/* command (in) */
-	usercmd_t cmd;
-	qboolean snapinitial;           /* if s has been changed outside pmove */
+    /* command (in) */
+    usercmd_t cmd;
+    qboolean snapinitial; /* if s has been changed outside pmove */
 
-	/* results (out) */
-	int numtouch;
-	struct edict_s *touchents[MAXTOUCH];
+    /* results (out) */
+    int numtouch;
+    struct edict_s *touchents[MAXTOUCH];
 
-	vec3_t viewangles;              /* clamped */
-	float viewheight;
+    vec3_t viewangles; /* clamped */
+    float viewheight;
 
-	vec3_t mins, maxs;              /* bounding box size */
+    vec3_t mins, maxs; /* bounding box size */
 
-	struct edict_s *groundentity;
-	int watertype;
-	int waterlevel;
+    struct edict_s *groundentity;
+    int watertype;
+    int waterlevel;
 
-	/* callbacks to test the world */
-	trace_t (*trace)(vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end);
-	int (*pointcontents)(vec3_t point);
+    /* callbacks to test the world */
+    trace_t (*trace)(vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end);
+    int (*pointcontents)(vec3_t point);
 } pmove_t;
 
 /* entity_state_t->effects 
-   Effects are things handled on the client side (lights, particles,
-   frame animations)  that happen constantly on the given entity. 
-   An entity that has effects will be sent to the client even if
-   it has a zero index model. */
+ Effects are things handled on the client side (lights, particles,
+ frame animations)  that happen constantly on the given entity.
+ An entity that has effects will be sent to the client even if
+ it has a zero index model. */
 #define EF_ROTATE 0x00000001                /* rotate (bonus items) */
 #define EF_GIB 0x00000002                   /* leave a trail */
 #define EF_BLASTER 0x00000008               /* redlight + trail */
@@ -832,67 +821,66 @@ typedef struct
 extern vec3_t monster_flash_offset[];
 
 /* Temp entity events are for things that happen 
-   at a location seperate from any existing entity. 
-   Temporary entity messages are explicitly constructed 
-   and broadcast. */
-typedef enum
-{
-	TE_GUNSHOT,
-	TE_BLOOD,
-	TE_BLASTER,
-	TE_RAILTRAIL,
-	TE_SHOTGUN,
-	TE_EXPLOSION1,
-	TE_EXPLOSION2,
-	TE_ROCKET_EXPLOSION,
-	TE_GRENADE_EXPLOSION,
-	TE_SPARKS,
-	TE_SPLASH,
-	TE_BUBBLETRAIL,
-	TE_SCREEN_SPARKS,
-	TE_SHIELD_SPARKS,
-	TE_BULLET_SPARKS,
-	TE_LASER_SPARKS,
-	TE_PARASITE_ATTACK,
-	TE_ROCKET_EXPLOSION_WATER,
-	TE_GRENADE_EXPLOSION_WATER,
-	TE_MEDIC_CABLE_ATTACK,
-	TE_BFG_EXPLOSION,
-	TE_BFG_BIGEXPLOSION,
-	TE_BOSSTPORT,           /* used as '22' in a map, so DON'T RENUMBER!!! */
-	TE_BFG_LASER,
-	TE_GRAPPLE_CABLE,
-	TE_WELDING_SPARKS,
-	TE_GREENBLOOD,
-	TE_BLUEHYPERBLASTER,
-	TE_PLASMA_EXPLOSION,
-	TE_TUNNEL_SPARKS,
-	TE_BLASTER2,
-	TE_RAILTRAIL2,
-	TE_FLAME,
-	TE_LIGHTNING,
-	TE_DEBUGTRAIL,
-	TE_PLAIN_EXPLOSION,
-	TE_FLASHLIGHT,
-	TE_FORCEWALL,
-	TE_HEATBEAM,
-	TE_MONSTER_HEATBEAM,
-	TE_STEAM,
-	TE_BUBBLETRAIL2,
-	TE_MOREBLOOD,
-	TE_HEATBEAM_SPARKS,
-	TE_HEATBEAM_STEAM,
-	TE_CHAINFIST_SMOKE,
-	TE_ELECTRIC_SPARKS,
-	TE_TRACKER_EXPLOSION,
-	TE_TELEPORT_EFFECT,
-	TE_DBALL_GOAL,
-	TE_WIDOWBEAMOUT,
-	TE_NUKEBLAST,
-	TE_WIDOWSPLASH,
-	TE_EXPLOSION1_BIG,
-	TE_EXPLOSION1_NP,
-	TE_FLECHETTE
+ at a location seperate from any existing entity.
+ Temporary entity messages are explicitly constructed
+ and broadcast. */
+typedef enum {
+    TE_GUNSHOT,
+    TE_BLOOD,
+    TE_BLASTER,
+    TE_RAILTRAIL,
+    TE_SHOTGUN,
+    TE_EXPLOSION1,
+    TE_EXPLOSION2,
+    TE_ROCKET_EXPLOSION,
+    TE_GRENADE_EXPLOSION,
+    TE_SPARKS,
+    TE_SPLASH,
+    TE_BUBBLETRAIL,
+    TE_SCREEN_SPARKS,
+    TE_SHIELD_SPARKS,
+    TE_BULLET_SPARKS,
+    TE_LASER_SPARKS,
+    TE_PARASITE_ATTACK,
+    TE_ROCKET_EXPLOSION_WATER,
+    TE_GRENADE_EXPLOSION_WATER,
+    TE_MEDIC_CABLE_ATTACK,
+    TE_BFG_EXPLOSION,
+    TE_BFG_BIGEXPLOSION,
+    TE_BOSSTPORT, /* used as '22' in a map, so DON'T RENUMBER!!! */
+    TE_BFG_LASER,
+    TE_GRAPPLE_CABLE,
+    TE_WELDING_SPARKS,
+    TE_GREENBLOOD,
+    TE_BLUEHYPERBLASTER,
+    TE_PLASMA_EXPLOSION,
+    TE_TUNNEL_SPARKS,
+    TE_BLASTER2,
+    TE_RAILTRAIL2,
+    TE_FLAME,
+    TE_LIGHTNING,
+    TE_DEBUGTRAIL,
+    TE_PLAIN_EXPLOSION,
+    TE_FLASHLIGHT,
+    TE_FORCEWALL,
+    TE_HEATBEAM,
+    TE_MONSTER_HEATBEAM,
+    TE_STEAM,
+    TE_BUBBLETRAIL2,
+    TE_MOREBLOOD,
+    TE_HEATBEAM_SPARKS,
+    TE_HEATBEAM_STEAM,
+    TE_CHAINFIST_SMOKE,
+    TE_ELECTRIC_SPARKS,
+    TE_TRACKER_EXPLOSION,
+    TE_TELEPORT_EFFECT,
+    TE_DBALL_GOAL,
+    TE_WIDOWBEAMOUT,
+    TE_NUKEBLAST,
+    TE_WIDOWSPLASH,
+    TE_EXPLOSION1_BIG,
+    TE_EXPLOSION1_NP,
+    TE_FLECHETTE
 } temp_event_t;
 
 #define SPLASH_UNKNOWN 0
@@ -904,9 +892,9 @@ typedef enum
 #define SPLASH_BLOOD 6
 
 /* sound channels:
-   channel 0 never willingly overrides 
-   other channels (1-7) allways override
-   a playing sound on that channel */
+ channel 0 never willingly overrides
+ other channels (1-7) allways override
+ a playing sound on that channel */
 #define CHAN_AUTO 0
 #define CHAN_WEAPON 1
 #define CHAN_VOICE 2
@@ -981,8 +969,8 @@ typedef enum
 #define SHORT2ANGLE(x) ((x) * (360.0 / 65536))
 
 /* config strings are a general means of communication from 
-   the server to all connected clients. Each config string 
-   can be at most MAX_QPATH characters. */
+ the server to all connected clients. Each config string
+ can be at most MAX_QPATH characters. */
 #define CS_NAME 0
 #define CS_CDTRACK 1
 #define CS_SKY 2
@@ -1006,71 +994,68 @@ typedef enum
 /* ============================================== */
 
 /* entity_state_t->event values 
-   entity events are for effects that take place reletive 
-   to an existing entities origin.  Very network efficient. 
-   All muzzle flashes really should be converted to events... */
-typedef enum
-{
-	EV_NONE,
-	EV_ITEM_RESPAWN,
-	EV_FOOTSTEP,
-	EV_FALLSHORT,
-	EV_FALL,
-	EV_FALLFAR,
-	EV_PLAYER_TELEPORT,
-	EV_OTHER_TELEPORT
+ entity events are for effects that take place reletive
+ to an existing entities origin.  Very network efficient.
+ All muzzle flashes really should be converted to events... */
+typedef enum {
+    EV_NONE,
+    EV_ITEM_RESPAWN,
+    EV_FOOTSTEP,
+    EV_FALLSHORT,
+    EV_FALL,
+    EV_FALLFAR,
+    EV_PLAYER_TELEPORT,
+    EV_OTHER_TELEPORT
 } entity_event_t;
 
 /* entity_state_t is the information conveyed from the server 
-   in an update message about entities that the client will 
-   need to render in some way */
-typedef struct entity_state_s
-{
-	int number;             /* edict index */
+ in an update message about entities that the client will
+ need to render in some way */
+typedef struct entity_state_s {
+    int number; /* edict index */
 
-	vec3_t origin;
-	vec3_t angles;
-	vec3_t old_origin;      /* for lerping */
-	int modelindex;
-	int modelindex2, modelindex3, modelindex4;      /* weapons, CTF flags, etc */
-	int frame;
-	int skinnum;
-	unsigned int effects;   
-	int renderfx;
-	int solid;              /* for client side prediction, 8*(bits 0-4) is x/y radius */
-							/* 8*(bits 5-9) is z down distance, 8(bits10-15) is z up */
-							/* gi.linkentity sets this properly */
-	int sound;              /* for looping sounds, to guarantee shutoff */
-	int event;              /* impulse events -- muzzle flashes, footsteps, etc */
-							/* events only go out for a single frame, they */
-							/* are automatically cleared each frame */
+    vec3_t origin;
+    vec3_t angles;
+    vec3_t old_origin; /* for lerping */
+    int modelindex;
+    int modelindex2, modelindex3, modelindex4; /* weapons, CTF flags, etc */
+    int frame;
+    int skinnum;
+    unsigned int effects;
+    int renderfx;
+    int solid; /* for client side prediction, 8*(bits 0-4) is x/y radius */
+    /* 8*(bits 5-9) is z down distance, 8(bits10-15) is z up */
+    /* gi.linkentity sets this properly */
+    int sound; /* for looping sounds, to guarantee shutoff */
+    int event; /* impulse events -- muzzle flashes, footsteps, etc */
+    /* events only go out for a single frame, they */
+    /* are automatically cleared each frame */
 } entity_state_t;
 
 /* ============================================== */
 
 /* player_state_t is the information needed in addition to pmove_state_t 
-   to rendered a view.  There will only be 10 player_state_t sent each second, 
-   but the number of pmove_state_t changes will be reletive to client 
-   frame rates */
-typedef struct
-{
-	pmove_state_t pmove;        /* for prediction */
+ to rendered a view.  There will only be 10 player_state_t sent each second,
+ but the number of pmove_state_t changes will be reletive to client
+ frame rates */
+typedef struct {
+    pmove_state_t pmove; /* for prediction */
 
-	vec3_t viewangles;          /* for fixed views */
-	vec3_t viewoffset;          /* add to pmovestate->origin */
-	vec3_t kick_angles;         /* add to view direction to get render angles */
-								/* set by weapon kicks, pain effects, etc */
+    vec3_t viewangles; /* for fixed views */
+    vec3_t viewoffset; /* add to pmovestate->origin */
+    vec3_t kick_angles; /* add to view direction to get render angles */
+    /* set by weapon kicks, pain effects, etc */
 
-	vec3_t gunangles;
-	vec3_t gunoffset;
-	int gunindex;
-	int gunframe;
+    vec3_t gunangles;
+    vec3_t gunoffset;
+    int gunindex;
+    int gunframe;
 
-	float blend[4];             /* rgba full screen effect */
-	float fov;                  /* horizontal field of view */
-	int rdflags;                /* refdef flags */
+    float blend[4]; /* rgba full screen effect */
+    float fov; /* horizontal field of view */
+    int rdflags; /* refdef flags */
 
-	short stats[MAX_STATS];     /* fast status bar updates */
+    short stats[MAX_STATS]; /* fast status bar updates */
 } player_state_t;
 
 #define VIDREF_GL 1
@@ -1079,7 +1064,7 @@ typedef struct
 
 extern int vidref_val;
 
-size_t verify_fread(void *, size_t, size_t, FILE *);
-size_t verify_fwrite(void *, size_t, size_t, FILE *);
+size_t verify_fread(void*, size_t, size_t, FILE*);
+size_t verify_fwrite(void*, size_t, size_t, FILE*);
 
 #endif /* CTF_SHARED_H */
