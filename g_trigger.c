@@ -24,7 +24,7 @@
  * =======================================================================
  */
 
-#include "header/local.h"
+#include "local.h"
 
 void
 InitTrigger(edict_t *self)
