@@ -26,7 +26,7 @@
  * =======================================================================
  */ 
 
-#include "../header/local.h"
+#include "local.h"
 
 #define STEPSIZE 18
 

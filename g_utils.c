@@ -24,7 +24,7 @@
  * =======================================================================
  */ 
 
-#include "header/local.h"
+#include "local.h"
 
 void
 G_ProjectSource(vec3_t point, vec3_t distance, vec3_t forward,

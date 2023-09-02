@@ -24,7 +24,7 @@
  * =======================================================================
  */
 
-#include "../header/local.h"
+#include "local.h"
 
 /* Note that the pmenu entries are duplicated 
    this is so that a static set of pmenu entries can be used 

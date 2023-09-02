@@ -25,7 +25,7 @@
  * =======================================================================
  */ 
 
-#include "header/local.h"
+#include "local.h"
 
 /* monster weapons */
 

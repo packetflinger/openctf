@@ -24,8 +24,8 @@
  * =======================================================================
  */
 
-#include "header/local.h"
-#include "monster/player.h"
+#include "local.h"
+#include "player.h"
 
 static char *
 ClientTeam(edict_t *ent, char* value)

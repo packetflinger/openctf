@@ -24,7 +24,7 @@
  * =======================================================================
  */ 
 
-#include "header/local.h"
+#include "local.h"
 
 void
 UpdateChaseCam(edict_t *ent)

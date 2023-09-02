@@ -26,7 +26,7 @@
  * =======================================================================
  */ 
 
-#include "header/local.h"
+#include "local.h"
 
 #ifndef BUILD_DATE
 #define BUILD_DATE __DATE__

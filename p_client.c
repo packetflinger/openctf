@@ -24,8 +24,8 @@
  * =======================================================================
  */
 
-#include "../header/local.h"
-#include "../monster/player.h"
+#include "local.h"
+#include "player.h"
 
 void SP_misc_teleporter_dest(edict_t *ent);
 

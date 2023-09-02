@@ -24,7 +24,7 @@
  * =======================================================================
  */
 
-#include "header/local.h"
+#include "local.h"
 
 /*
  * pushmove objects do not obey gravity, and do not interact with

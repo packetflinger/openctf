@@ -24,7 +24,7 @@
  * =======================================================================
  */
 
-#include "header/local.h"
+#include "local.h"
 
 game_locals_t game;
 level_locals_t level;

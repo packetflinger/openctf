@@ -24,7 +24,7 @@
  * =======================================================================
  */
 
-#include "header/local.h"
+#include "local.h"
 
 void
 Svcmd_Test_f(void)
