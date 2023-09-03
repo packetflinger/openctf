@@ -60,6 +60,20 @@ typedef struct ctfgame_s {
 
 ctfgame_t ctfgame;
 
+cvar_t *ctf;
+cvar_t *ctf_forcejoin;
+
+cvar_t *competition;
+cvar_t *matchlock;
+cvar_t *electpercentage;
+cvar_t *matchtime;
+cvar_t *matchsetuptime;
+cvar_t *matchstarttime;
+cvar_t *admin_password;
+cvar_t *allow_admin;
+cvar_t *warp_list;
+cvar_t *warn_unbalanced;
+
 /* Index for various CTF pics, this saves us
  * from calling gi.imageindex all the time 
  * and saves a few CPU cycles since we don't
@@ -326,7 +340,20 @@ void CTFSpawn(void) {
     }
 }
 
-
+void CTFInit(void) {
+    ctf = gi.cvar("ctf", "1", CVAR_SERVERINFO);
+    ctf_forcejoin = gi.cvar("ctf_forcejoin", "", 0);
+    competition = gi.cvar("competition", "0", CVAR_SERVERINFO);
+    matchlock = gi.cvar("matchlock", "1", CVAR_SERVERINFO);
+    electpercentage = gi.cvar("electpercentage", "66", 0);
+    matchtime = gi.cvar("matchtime", "20", CVAR_SERVERINFO);
+    matchsetuptime = gi.cvar("matchsetuptime", "10", 0);
+    matchstarttime = gi.cvar("matchstarttime", "20", 0);
+    admin_password = gi.cvar("admin_password", "", 0);
+    allow_admin = gi.cvar("allow_admin", "1", 0);
+    warp_list = gi.cvar("warp_list", "q2ctf1 q2ctf2 q2ctf3 q2ctf4 q2ctf5", 0);
+    warn_unbalanced = gi.cvar("warn_unbalanced", "1", 0);
+}
 
 void CTFPrecache(void) {
     imageindex_i_ctf1 = gi.imageindex("i_ctf1");

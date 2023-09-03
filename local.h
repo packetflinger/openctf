@@ -39,8 +39,6 @@
 /* the "gameversion" client command will print this plus compile date */
 #define GAMEVERSION "ctf"
 
-#define q_exported __attribute__((visibility("default")))
-
 /* protocol bytes that can be directly added to messages */
 #define svc_muzzleflash 1
 #define svc_muzzleflash2 2
@@ -499,36 +497,32 @@ extern cvar_t *instantweap;
 extern cvar_t *password;
 extern cvar_t *g_select_empty;
 extern cvar_t *dedicated;
+
 extern cvar_t *filterban;
+
 extern cvar_t *sv_gravity;
 extern cvar_t *sv_maxvelocity;
+
 extern cvar_t *gun_x, *gun_y, *gun_z;
 extern cvar_t *sv_rollspeed;
 extern cvar_t *sv_rollangle;
+
 extern cvar_t *run_pitch;
 extern cvar_t *run_roll;
 extern cvar_t *bob_up;
 extern cvar_t *bob_pitch;
 extern cvar_t *bob_roll;
+
 extern cvar_t *sv_cheats;
 extern cvar_t *maxclients;
+
 extern cvar_t *flood_msgs;
 extern cvar_t *flood_persecond;
 extern cvar_t *flood_waitdelay;
+
 extern cvar_t *sv_maplist;
+
 extern cvar_t *aimfix;
-extern cvar_t *ctf;
-extern cvar_t *ctf_forcejoin;
-extern cvar_t *competition;
-extern cvar_t *matchlock;
-extern cvar_t *electpercentage;
-extern cvar_t *matchtime;
-extern cvar_t *matchsetuptime;
-extern cvar_t *matchstarttime;
-extern cvar_t *admin_password;
-extern cvar_t *allow_admin;
-extern cvar_t *warp_list;
-extern cvar_t *warn_unbalanced;
 
 #define world (&g_edicts[0])
 

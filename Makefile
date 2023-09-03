@@ -44,7 +44,6 @@ OBJS := \
 	g_combat.o \
 	g_ctf.o \
 	g_func.o \
-	g_init.o \
 	g_items.o \
 	g_main.o \
 	g_misc.o \
