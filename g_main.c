@@ -103,38 +103,7 @@ void ShutdownGame(void) {
     gi.FreeTags(TAG_GAME);
 }
 
-/*
- * Returns a pointer to the structure with
- * all entry points and global variables
- */
-game_export_t* GetGameAPI(game_import_t *import) {
-    gi = *import;
 
-    globals.apiversion = GAME_API_VERSION;
-    globals.Init = InitGame;
-    globals.Shutdown = ShutdownGame;
-    globals.SpawnEntities = SpawnEntities;
-
-    globals.WriteGame = WriteGame;
-    globals.ReadGame = ReadGame;
-    globals.WriteLevel = WriteLevel;
-    globals.ReadLevel = ReadLevel;
-
-    globals.ClientThink = ClientThink;
-    globals.ClientConnect = ClientConnect;
-    globals.ClientUserinfoChanged = ClientUserinfoChanged;
-    globals.ClientDisconnect = ClientDisconnect;
-    globals.ClientBegin = ClientBegin;
-    globals.ClientCommand = ClientCommand;
-
-    globals.RunFrame = G_RunFrame;
-
-    globals.ServerCommand = ServerCommand;
-
-    globals.edict_size = sizeof(edict_t);
-
-    return &globals;
-}
 
 void Sys_Error(char *error, ...) {
     va_list argptr;
