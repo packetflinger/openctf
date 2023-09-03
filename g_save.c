@@ -170,6 +170,7 @@ void InitGame(void) {
 
     /* others */
     aimfix = gi.cvar("aimfix", "0", CVAR_ARCHIVE);
+    cfgdir = gi.cvar("g_configdir", "config", CVAR_LATCH);
 
     /* items */
     InitItems();

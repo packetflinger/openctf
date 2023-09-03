@@ -497,32 +497,25 @@ extern cvar_t *instantweap;
 extern cvar_t *password;
 extern cvar_t *g_select_empty;
 extern cvar_t *dedicated;
-
 extern cvar_t *filterban;
-
 extern cvar_t *sv_gravity;
 extern cvar_t *sv_maxvelocity;
-
 extern cvar_t *gun_x, *gun_y, *gun_z;
 extern cvar_t *sv_rollspeed;
 extern cvar_t *sv_rollangle;
-
 extern cvar_t *run_pitch;
 extern cvar_t *run_roll;
 extern cvar_t *bob_up;
 extern cvar_t *bob_pitch;
 extern cvar_t *bob_roll;
-
 extern cvar_t *sv_cheats;
 extern cvar_t *maxclients;
-
 extern cvar_t *flood_msgs;
 extern cvar_t *flood_persecond;
 extern cvar_t *flood_waitdelay;
-
 extern cvar_t *sv_maplist;
-
 extern cvar_t *aimfix;
+extern cvar_t *cfgdir;
 
 #define world (&g_edicts[0])
 
